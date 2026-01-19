@@ -1,33 +1,39 @@
 export const GENEROS = {
-    MASCULINO: "masculino",
-    FEMININO: "feminino",
-    OUTRO: "outro"
+    MASCULINO: "Masculino",
+    FEMININO: "Feminino",
+    OUTRO: "Outro"
 };
 
 export const ALINHAMENTOS = {
-    BOM: "bom",
-    NEUTRO: "neutro",
-    MAL: "mal",
+    BOM: "Bom",
+    NEUTRO: "Neutro",
+    MAL: "Mal",
 };
 
 export const MIRACULOUS = {
-    JOANINHA: "joaninha",
-    GATO: "gato",
-    BORBOLETA: "borboleta",
-    TARTARUGA: "tartaruga",
-    RAPOSA: "raposa",
-    ABELHA: "abelha",
-    PAVAO: "pavao",
-    RATO: "rato",
-    TOURO: "touro",
-    TIGRE: "tigre",
-    COELHO: "coelho",
-    DRAGAO: "dragao",
-    COBRA: "cobra",
-    CAVALO: "cavalo",
-    CABRA: "cabra",
-    MACACO: "macaco",
-    GALO: "galo",
-    CACHORRO: "cachorro",
-    PORCO: "porco"
+    JOANINHA: "Joaninha",
+    GATO: "Gato",
+    BORBOLETA: "Borboleta",
+    TARTARUGA: "Tartaruga",
+    RAPOSA: "Raposa",
+    ABELHA: "Abelha",
+    PAVAO: "Pavão",
+    RATO: "Rato",
+    TOURO: "Touro",
+    TIGRE: "Tigre",
+    COELHO: "Coelho",
+    DRAGAO: "Dragao",
+    COBRA: "Cobra",
+    CAVALO: "Cavalo",
+    CABRA: "Cabra",
+    MACACO: "Macaco",
+    GALO: "Galo",
+    CACHORRO: "Cachorro",
+    PORCO: "Porco"
+};
+
+export const RESULTADOS_CHUTE = {
+    CORRETO: "Correto",
+    INCORRETO: "Incorreto",
+    PARCIAL: "Parcial"
 };
