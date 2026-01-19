@@ -112,7 +112,7 @@ export const personagens = [
         aliases: ["Miss Hound"],
         genero: GENEROS.FEMININO,
         alinhamentos: [ALINHAMENTOS.NEUTRO, ALINHAMENTOS.BOM],
-        identidades_akumatizadas: ["Desaparecida", "Miraculer"],
+        identidades_akumatizadas: ["Desaparecida", "Desaparecida (Escarlate)", "Miraculer"],
         miraculous_associados: [MIRACULOUS.CACHORRO, MIRACULOUS.JOANINHA, MIRACULOUS.GATO, MIRACULOUS.TARTARUGA, MIRACULOUS.RAPOSA],
         primeira_aparicao: {
             tipo: "episodio",
@@ -127,7 +127,7 @@ export const personagens = [
         aliases: ["Lila Rossi", "Chrysalis"],
         genero: GENEROS.FEMININO,
         alinhamentos: [ALINHAMENTOS.MAL],
-        identidades_akumatizadas: ["Volpina", "Camaleoa", "Hoaxer", "Timestalker", "Spectral Looter"],
+        identidades_akumatizadas: ["Volpina", "Volpina (Escarlate)", "Camaleoa", "Hoaxer", "Timestalker", "Spectral Looter"],
         miraculous_associados: [MIRACULOUS.BORBOLETA, MIRACULOUS.RAPOSA, MIRACULOUS.JOANINHA, MIRACULOUS.GATO],
         primeira_aparicao: {
             tipo: "episodio",
@@ -142,7 +142,7 @@ export const personagens = [
         aliases: ["Pegasus"],
         genero: GENEROS.MASCULINO,
         alinhamentos: [ALINHAMENTOS.BOM],
-        identidades_akumatizadas: ["Jogador", "Jogador 2.0"],
+        identidades_akumatizadas: ["Jogador", "Jogador (Escarlate)", "Jogador 2.0"],
         miraculous_associados: [MIRACULOUS.CAVALO],
         primeira_aparicao: {
             tipo: "episodio",
@@ -157,7 +157,7 @@ export const personagens = [
         aliases: ["Kagami Tsurugi", "Ryuko"],
         genero: GENEROS.FEMININO,
         alinhamentos: [ALINHAMENTOS.NEUTRO, ALINHAMENTOS.BOM],
-        identidades_akumatizadas: ["Revanche", "Oni-Chan", "Mentira", "Ryukomori", "Revanche Prime"],
+        identidades_akumatizadas: ["Revanche", "Revanche (Escarlate)", "Oni-Chan", "Mentira", "Ryukomori", "Revanche Prime"],
         miraculous_associados: [MIRACULOUS.DRAGAO, MIRACULOUS.TARTARUGA],
         primeira_aparicao: {
             tipo: "episodio",
@@ -217,7 +217,7 @@ export const personagens = [
         aliases: ["Pigella"],
         genero: GENEROS.FEMININO,
         alinhamentos: [ALINHAMENTOS.BOM],
-        identidades_akumatizadas: ["Princesa Perfume"],
+        identidades_akumatizadas: ["Princesa Perfume", "Princesa Perfume (Escarlate)"],
         miraculous_associados: [MIRACULOUS.PORCO],
         primeira_aparicao: {
             tipo: "episodio",
@@ -307,7 +307,7 @@ export const personagens = [
         aliases: ["Minotaurox"],
         genero: GENEROS.MASCULINO,
         alinhamentos: [ALINHAMENTOS.BOM],
-        identidades_akumatizadas: ["Coração de Pedra", "Miraculizado"],
+        identidades_akumatizadas: ["Coração de Pedra", "Coração de Pedra (Escarlate)", "Miraculizado"],
         miraculous_associados: [MIRACULOUS.TOURO],
         primeira_aparicao: {
             tipo: "episodio",
@@ -322,7 +322,7 @@ export const personagens = [
         aliases: ["Polymouse"],
         genero: GENEROS.FEMININO,
         alinhamentos: [ALINHAMENTOS.BOM],
-        identidades_akumatizadas: ["Horrificador"],
+        identidades_akumatizadas: ["Horrificador", "Horrificador (Escarlate)"],
         miraculous_associados: [MIRACULOUS.RATO],
         primeira_aparicao: {
             tipo: "episodio",
@@ -397,7 +397,7 @@ export const personagens = [
         aliases: ["King Monkey"],
         genero: GENEROS.MASCULINO,
         alinhamentos: [ALINHAMENTOS.BOM],
-        identidades_akumatizadas: ["Cupido Negro", "Humor Cruel"],
+        identidades_akumatizadas: ["Cupido Negro", "Cupido Negro (Escarlate)", "Humor Cruel"],
         miraculous_associados: [MIRACULOUS.MACACO],
         primeira_aparicao: {
             tipo: "episodio",
@@ -427,7 +427,7 @@ export const personagens = [
         aliases: [],
         genero: GENEROS.MASCULINO,
         alinhamentos: [ALINHAMENTOS.BOM],
-        identidades_akumatizadas: ["Guitarrista Malvado"],
+        identidades_akumatizadas: ["Guitarrista Malvado", "Guitarrista Malvado (Escarlate)"],
         miraculous_associados: [],
         primeira_aparicao: {
             tipo: "episodio",
@@ -442,7 +442,7 @@ export const personagens = [
         aliases: [],
         genero: GENEROS.FEMININO,
         alinhamentos: [ALINHAMENTOS.BOM],
-        identidades_akumatizadas: ["Rainha Repórter"],
+        identidades_akumatizadas: ["Rainha Repórter", "Rainha Repórter (Escarlate)"],
         miraculous_associados: [],
         primeira_aparicao: {
             tipo: "episodio",
@@ -454,14 +454,32 @@ export const personagens = [
 ];
 
 /*
-Obs.: Os personagens akumatizados em "Miraculizados" possuem todos os 15 poderes de miraculous possuídos 
-por Monarch (plano da Operação Aliance Perfeita na 5ª temporada). A maioria deles não usou todos os poderes
-em tela, então para facilitar a categorização, só foram listados os poderes que eles usaram efetivamente.
-Os personagens relevantes que foram Miraculizados são: Ivan Bruel, Denis Damoclès e Nora Césaire. Os poderes
-de miraculous utilizados por eles foram os seguintes:
-
-- Ivan Bruel: nenhum poder usado (foi salvo antes de usar qualquer poder);
-- Denis Damoclès: abelha;
-- Nora Césaire: tigre.
-
+Obs.: Os personagens akumatizados por Scarlet Moth nos episódios de "Dia dos Heróis" (pt. 1 e 2) são os seguintes:
+- Alya Césaire como Rena Fúria - ✅
+- Nino Lahiffe como Casca Grossa - ✅
+- Chlóe Bourgeois como Rainha Vespa - ✅
+- Cerise Bianca como Volpina (Escarlate) - ✅
+- Nadja Chamack como Rainha Repórter (Escarlate) - ✅
+- Sabrina Raincomprix como Desaparecida (Escarlate) - ✅
+- Jagged Stone como Guitarrista Malvado (Escarlate) - ✅
+- Clara Nigthingale como Cantora (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Mylene Haprèle como Horrificador (Escarlate) - ✅
+- Ivan Bruel como Coração de Pedra (Escarlate) - ✅
+- Max Kanté como Jogador (Escarlate) - ✅
+- Rose Lavillant como Princesa Perfume (Escarlate) - ✅
+- Placide I.T. (Gorila) como Gorizilla (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Le Chiến Kim como Cupido Negro (Escarlate) - ✅
+- Fred Haprèle como O Mímico (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- André como Glaciator (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Augusto como Gigantitã (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Otis Césaire como Animan (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Jalil Kubdel como O Faraó (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Roger Raincomprix como Rogercop (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Kyoko Tsurugi como Revanche (Escarlate) - ✅
+- Armand como Urso Maligno (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Audrey Bourgeois como Rainha da Moda (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- André Bourgeois como Ditador (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Ondine como Sereia (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Phillipe Candeloro como Frozer (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Armand D'Argencourt como Lâmina Negra (Escarlate) - PERSONAGEM NÃO CADASTRADO
 */
