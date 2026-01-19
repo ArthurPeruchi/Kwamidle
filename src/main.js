@@ -137,6 +137,10 @@ function addGuessToTable(personagem) {
         "Incorreto" :
         comparison.results.identidades_akumatizadas
     ];
+    // Tooltip com as identidades akumatizadas
+    identidadesCell.title = personagem.identidades_akumatizadas.length > 0 ?
+        personagem.identidades_akumatizadas.join(", ") :
+        "Nenhuma identidade akumatizada";
     row.appendChild(identidadesCell);
 
     // Miraculous Associados
