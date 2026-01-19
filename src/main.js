@@ -160,8 +160,8 @@ function addGuessToTable(personagem) {
     ];
     row.appendChild(aparicaoCell);
 
-    // Adiciona a linha à tabela
-    tableBody.appendChild(row);
+    // Adiciona a linha à tabela (acima)
+    tableBody.prepend(row);
 }
 
 // Função para submeter um chute
