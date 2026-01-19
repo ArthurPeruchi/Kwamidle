@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./src/css/index.css" />
     <title>Kwamidle</title>
   </head>
   <body>
@@ -14,6 +15,22 @@
     <datalist id="characters-list"></datalist>
     <br></br>
     <button id="submit-guess-button" disabled>Confirmar Chute</button>
+    <br></br>
+
+    <table id="guesses-table">
+      <thead>
+        <tr>
+          <th id="character-column">Personagem</th>
+          <th id="gender-column">Gênero</th>
+          <th id="alignment-column">Alinhamento(s)</th>
+          <th id="akumatized-forms-column">Formas Akumatizadas</th>
+          <th id="powers-column">Poderes de Miraculous Usados</th>
+          <th id="first-appearance-column">Primeira Aparição</th>
+        </tr>
+      </thead>
+      <tbody id="guesses-table-body">
+      </tbody>
+    </table>
 
     <script type="module" src="./src/main.js"></script>
   </body>

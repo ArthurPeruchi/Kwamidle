@@ -13,7 +13,9 @@ const submitButton = document.getElementById('submit-guess-button');
 
 // Substituir datalist por dropdown customizado para melhor controle
 const datalist = document.getElementById('characters-list');
+const table = document.getElementById("guesses-table");
 
+// Função para atualizar o datalist com base no chute atual
 function updateDatalist(guess = "") {
     // Ordenar personagens por nome para melhor usabilidade
     const sortedPersonagens = personagens.slice().sort((a, b) => a.nome.localeCompare(b.nome));
@@ -85,17 +87,120 @@ function clearInput() {
     submitButton.disabled = true;
 }
 
-// Readiciona as opções ao datalist ao reiniciar o jogo
+function createCell(text) {
+    const td = document.createElement("td");
+    td.textContent = text;
+    return td;
+}
+
+// Função para incluir um chute na tabela de chutes
+function addGuessToTable(personagem) {
+    const tableBody = document.getElementById("guesses-table-body");
+    const row = document.createElement("tr");
+
+    row.appendChild(createCell(personagem.nome));
+    row.appendChild(createCell(personagem.genero));
+    row.appendChild(createCell(personagem.alinhamentos?.join(", ") || "-"));
+    row.appendChild(createCell(personagem.identidades_akumatizadas.length.toString()));
+    row.appendChild(createCell(personagem.miraculous_associados?.join(", ") || "-"));
+    row.appendChild(createCell(`T${personagem.primeira_aparicao.temporada} E${personagem.primeira_aparicao.episodio}`));
+
+    tableBody.appendChild(row);
+}
+
+// Função para submeter um chute
+function submitGuess(guess) {
+    // Se o jogo já terminou, avisa e reinicia
+    if(gameState.isFinished) {
+        alert("O jogo já terminou. Reiniciando...");
+        resetGame();
+        return;
+    }
+
+    // Verifica se há parênteses no chute
+    if (containsParentheses(guess)) {
+        alert("Não é permitido usar parênteses no chute.");
+        return;
+    }
+
+    // Se não conseguiu completar, o chute é inválido
+    const completedGuess = getBestCompletion(guess);
+    if (!completedGuess) {
+        alert("Chute inválido. Tente novamente.");
+        return;
+    }
+
+    const personagem = personagens.find(p =>
+        normalizeGuess(p.nome) === normalizeGuess(guess)
+    );
+
+    if (!personagem) return;
+
+    // Autocompleta visualmente o chute no input
+    input.value = completedGuess;
+
+    // Adiciona o chute ao estado do jogo
+    const result = addGuess(gameState, completedGuess);
+    if (result?.error) {
+        alert(result.error);
+        return;
+    }
+
+    addGuessToTable(personagem);
+    updateGuessesTableVisibility();
+    clearInput();
+
+    console.log("Chute do usuário:", completedGuess);
+}
+
+// Função para converter o chute do usuário (string) em um objeto estruturado
+function convertGuessToObject(guess) {
+    const personagem = personagens.find(p =>
+        normalizeGuess(p.nome) === normalizeGuess(guess)
+    );
+    if (!personagem) {
+        return null;
+    }
+    return {
+        nome: personagem.nome,
+        genero: personagem.genero,
+        alinhamentos: personagem.alinhamentos,
+        identidades_akumatizadas: personagem.identidades_akumatizadas,
+        miraculous_associados: personagem.miraculous_associados,
+        primeira_aparicao: personagem.primeira_aparicao
+    };
+}
+
+// Função para readicionar as opções ao datalist ao reiniciar o jogo
 function resetDatalist() {
     updateDatalist("");
 }
 
+// Função para verificar se o jogo já começou
+function hasGameStarted() {
+    if (gameState.guesses.length > 0) {
+        return true;
+    }
+}
+
+// Função para atualizar a visibilidade da tabela de chutes após o primeiro chute
+function updateGuessesTableVisibility() {
+    if (hasGameStarted()) {
+        table.style.display = "table";
+    } else {
+        table.style.display = "none";
+    }
+}
+
 // Função para reiniciar o jogo
 function resetGame() {
-    clearInput();
-    gameState = createGameState(6);
-    console.log("Personagem do dia:", gameState.characterOfTheDay);
-    resetDatalist();
+    if (gameState.isFinished || gameState.guesses.length >= gameState.maxGuesses) {
+        clearInput();
+        gameState = resetGameState(gameState.maxGuesses);
+        console.log("Personagem do dia:", gameState.characterOfTheDay);
+        resetDatalist();
+        updateGuessesTableVisibility();
+    }
 }
 
 /*
@@ -142,45 +247,19 @@ input.addEventListener("input", () => {
 
 // Adiciona evento ao botão de submissão do chute
 submitButton.addEventListener('click', () => {
-    // Se o jogo já terminou, avisa e reinicia
-    if (gameState.isFinished) {
-        alert("O jogo já terminou. Reiniciando...");
-        resetGame();
-        return;
-    }
+    const guess = input.value;
 
-    const userInput = input.value;
-    
-    if (containsParentheses(userInput)) {
-        alert("Não é permitido usar parênteses no chute.");
-        clearInput();
-        return;
-    }
-    
-    const completedGuess = getBestCompletion(userInput);
-
-    // Se não conseguiu completar, o chute é inválido
+    const completedGuess = getBestCompletion(guess);
     if (!completedGuess) {
         alert("Chute inválido. Tente novamente.");
-        clearInput();
         return;
     }
 
-    // Autocompleta visualmente o chute no input
-    input.value = completedGuess;
+    submitGuess(completedGuess);
 
-    // Adiciona o chute ao estado do jogo
-    const result = addGuess(gameState, completedGuess);
-    if (result?.error) {
-        alert(result.error);
-        clearInput();
-        return;
-    }
+    const guessValue = convertGuessToObject(guess);
 
-    console.log("Chute do usuário:", completedGuess);
-    clearInput();
-
-    const comparison = compareGuess(completedGuess, gameState.characterOfTheDay);
+    const comparison = compareGuess(guessValue, gameState.characterOfTheDay);
     if (comparison.isCorrect) {
         alert(`Parabéns! Você acertou! O personagem era ${gameState.characterOfTheDay.nome}.`);
 
