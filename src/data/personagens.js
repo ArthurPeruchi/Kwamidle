@@ -282,8 +282,8 @@ export const personagens = [
         primeira_aparicao: {
             tipo: "episodio",
             temporada: 1,
-            episodio: 1,
-            ordem_global: 1
+            episodio: 3,
+            ordem_global: 3
         }
     },
     {
@@ -299,6 +299,156 @@ export const personagens = [
             temporada: 1,
             episodio: 1,
             ordem_global: 1
+        }
+    },
+    {
+        id: 21,
+        nome: "Ivan Bruel",
+        aliases: ["Minotaurox"],
+        genero: GENEROS.MASCULINO,
+        alinhamentos: [ALINHAMENTOS.BOM],
+        identidades_akumatizadas: ["Coração de Pedra", "Miraculizado"],
+        miraculous_associados: [MIRACULOUS.TOURO],
+        primeira_aparicao: {
+            tipo: "episodio",
+            temporada: 1,
+            episodio: 2,
+            ordem_global: 2
+        }
+    },
+    {
+        id: 22,
+        nome: "Mylene Haprèle",
+        aliases: ["Polymouse"],
+        genero: GENEROS.FEMININO,
+        alinhamentos: [ALINHAMENTOS.BOM],
+        identidades_akumatizadas: ["Horrificador"],
+        miraculous_associados: [MIRACULOUS.RATO],
+        primeira_aparicao: {
+            tipo: "episodio",
+            temporada: 1,
+            episodio: 2,
+            ordem_global: 2
+        }
+    },
+    {
+        id: 23,
+        nome: "Nora Césaire",
+        aliases: [],
+        genero: GENEROS.FEMININO,
+        alinhamentos: [ALINHAMENTOS.BOM],
+        identidades_akumatizadas: ["Anansi", "Miraculizado"],
+        miraculous_associados: [MIRACULOUS.TIGRE],
+        primeira_aparicao: {
+            tipo: "episodio",
+            temporada: 2,
+            episodio: 21,
+            ordem_global: 47
+        }
+    },
+    {
+        id: 24,
+        nome: "Alix Kubdel",
+        aliases: ["Bunnyx"],
+        genero: GENEROS.FEMININO,
+        alinhamentos: [ALINHAMENTOS.BOM],
+        identidades_akumatizadas: ["Temporizadora"],
+        miraculous_associados: [MIRACULOUS.COELHO, MIRACULOUS.CACHORRO],
+        primeira_aparicao: {
+            tipo: "episodio",
+            temporada: 1,
+            episodio: 2,
+            ordem_global: 2
+        }
+    },
+    {
+        id: 25,
+        nome: "Nathaniel Kurtzberg",
+        aliases: ["Caprikid"],
+        genero: GENEROS.MASCULINO,
+        alinhamentos: [ALINHAMENTOS.BOM],
+        identidades_akumatizadas: ["Ilustrador do Mal"],
+        miraculous_associados: [MIRACULOUS.CABRA],
+        primeira_aparicao: {
+            tipo: "episodio",
+            temporada: 1,
+            episodio: 2,
+            ordem_global: 2
+        }
+    },
+    {
+        id: 26,
+        nome: "Marc Anciel",
+        aliases: ["Rooster Bold"],
+        genero: GENEROS.MASCULINO,
+        alinhamentos: [ALINHAMENTOS.BOM],
+        identidades_akumatizadas: ["Reverso"],
+        miraculous_associados: [MIRACULOUS.GALO],
+        primeira_aparicao: {
+            tipo: "episodio",
+            temporada: 2,
+            episodio: 9,
+            ordem_global: 35
+        }
+    },
+    {
+        id: 27,
+        nome: "Lê Chiến Kim",
+        aliases: ["King Monkey"],
+        genero: GENEROS.MASCULINO,
+        alinhamentos: [ALINHAMENTOS.BOM],
+        identidades_akumatizadas: ["Cupido Negro", "Humor Cruel"],
+        miraculous_associados: [MIRACULOUS.MACACO],
+        primeira_aparicao: {
+            tipo: "episodio",
+            temporada: 1,
+            episodio: 2,
+            ordem_global: 2
+        }
+    },
+    {
+        id: 28,
+        nome: "Wang Fu",
+        aliases: ["Mestre Fu", "Jade Turtle"],
+        genero: GENEROS.MASCULINO,
+        alinhamentos: [ALINHAMENTOS.BOM],
+        identidades_akumatizadas: ["Furioso Fu"],
+        miraculous_associados: [MIRACULOUS.TARTARUGA, MIRACULOUS.PAVAO],
+        primeira_aparicao: {
+            tipo: "episodio",
+            temporada: 1,
+            episodio: 4,
+            ordem_global: 4
+        }
+    },
+    {
+        id: 29,
+        nome: "Jagged Stone",
+        aliases: [],
+        genero: GENEROS.MASCULINO,
+        alinhamentos: [ALINHAMENTOS.BOM],
+        identidades_akumatizadas: ["Guitarrista Malvado"],
+        miraculous_associados: [],
+        primeira_aparicao: {
+            tipo: "episodio",
+            temporada: 1,
+            episodio: 7,
+            ordem_global: 7
+        }
+    },
+    {
+        id: 30,
+        nome: "Nadja Chamack",
+        aliases: [],
+        genero: GENEROS.FEMININO,
+        alinhamentos: [ALINHAMENTOS.BOM],
+        identidades_akumatizadas: ["Rainha Repórter"],
+        miraculous_associados: [],
+        primeira_aparicao: {
+            tipo: "episodio",
+            temporada: 1,
+            episodio: 3,
+            ordem_global: 3
         }
     }
 ];
