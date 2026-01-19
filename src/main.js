@@ -87,6 +87,7 @@ function clearInput() {
     submitButton.disabled = true;
 }
 
+// Função para criar uma célula da tabela
 function createCell(text) {
     const td = document.createElement("td");
     td.textContent = text;
@@ -98,13 +99,64 @@ function addGuessToTable(personagem) {
     const tableBody = document.getElementById("guesses-table-body");
     const row = document.createElement("tr");
 
-    row.appendChild(createCell(personagem.nome));
-    row.appendChild(createCell(personagem.genero));
-    row.appendChild(createCell(personagem.alinhamentos?.join(", ") || "-"));
-    row.appendChild(createCell(personagem.identidades_akumatizadas.length.toString()));
-    row.appendChild(createCell(personagem.miraculous_associados?.join(", ") || "-"));
-    row.appendChild(createCell(`T${personagem.primeira_aparicao.temporada} E${personagem.primeira_aparicao.episodio}`));
+    const comparison = compareGuess(personagem, gameState.characterOfTheDay);
+    
+    const colors = {
+    "Correto": "#4CAF50",
+    "Incorreto": "#F44336",
+    "Parcial": "#ffe23b"
+    };
 
+    const arrows = {
+        "MAIOR": " ▼",
+        "MENOR": " ▲"
+    };
+
+    // Nome
+    const nomeCell = createCell(personagem.nome);
+    nomeCell.style.backgroundColor = colors[comparison.results.nome];
+    row.appendChild(nomeCell);
+
+    // Gênero
+    const generoCell = createCell(personagem.genero);
+    generoCell.style.backgroundColor = colors[comparison.results.genero];
+    row.appendChild(generoCell);
+
+    // Alinhamentos
+    const alinhamentosCell = createCell(personagem.alinhamentos?.join(", ") || "-");
+    alinhamentosCell.style.backgroundColor = colors[comparison.results.alinhamentos];
+    row.appendChild(alinhamentosCell);
+
+    // Identidades Akumatizadas
+    const identidadesCell = createCell(personagem.identidades_akumatizadas.length.toString());
+    if (typeof comparison.results.identidades_akumatizadas === 'object' && comparison.results.identidades_akumatizadas.posicao) {
+        identidadesCell.textContent += arrows[comparison.results.identidades_akumatizadas.posicao];
+    }
+    identidadesCell.style.backgroundColor = colors[
+        typeof comparison.results.identidades_akumatizadas === 'object' ?
+        "Incorreto" :
+        comparison.results.identidades_akumatizadas
+    ];
+    row.appendChild(identidadesCell);
+
+    // Miraculous Associados
+    const miraculousCell = createCell(personagem.miraculous_associados?.join(", ") || "-");
+    miraculousCell.style.backgroundColor = colors[comparison.results.miraculous_associados];
+    row.appendChild(miraculousCell);
+
+    // Primeira Aparição
+    const aparicaoCell = createCell(`T${personagem.primeira_aparicao.temporada} E${personagem.primeira_aparicao.episodio}`);
+    if (typeof comparison.results.primeira_aparicao === 'object' && comparison.results.primeira_aparicao.posicao) {
+        aparicaoCell.textContent += arrows[comparison.results.primeira_aparicao.posicao];
+    }
+    aparicaoCell.style.backgroundColor = colors[
+        typeof comparison.results.primeira_aparicao === 'object' ?
+        "Incorreto" :
+        comparison.results.primeira_aparicao
+    ];
+    row.appendChild(aparicaoCell);
+
+    // Adiciona a linha à tabela
     tableBody.appendChild(row);
 }
 
@@ -257,7 +309,7 @@ submitButton.addEventListener('click', () => {
 
     submitGuess(completedGuess);
 
-    const guessValue = convertGuessToObject(guess);
+    const guessValue = convertGuessToObject(completedGuess);
 
     const comparison = compareGuess(guessValue, gameState.characterOfTheDay);
     if (comparison.isCorrect) {

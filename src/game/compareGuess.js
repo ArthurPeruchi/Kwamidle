@@ -6,6 +6,10 @@ function compareAttribute(guessValue, answerValue) {
     if (guessValue === answerValue) {
         return RESULTADOS_CHUTE.CORRETO;
     } else {
+        if (typeof guessValue === "number" && typeof answerValue === "number") {
+            const posicao = guessValue < answerValue ? "MENOR" : "MAIOR";
+            return { ...RESULTADOS_CHUTE.INCORRETO, posicao };
+        }
         return RESULTADOS_CHUTE.INCORRETO;
     }
 }
@@ -17,8 +21,13 @@ function compareArrayAttribute(guessArray = [], answerArray = []) {
     const intersection = normalizedGuessArray.filter(item => normalizedAnswerArray.includes(item));
 
     if (intersection.length === 0) {
-        return RESULTADOS_CHUTE.INCORRETO;
-    } else if (intersection.length === answerArray.length && normalizedGuessArray.length === normalizedAnswerArray.length) {
+        if (normalizedAnswerArray.length === 0 && normalizedGuessArray.length === 0) {
+            return RESULTADOS_CHUTE.CORRETO;
+        } else {
+            return RESULTADOS_CHUTE.INCORRETO;
+        }
+    }
+    else if (intersection.length === normalizedAnswerArray.length && normalizedGuessArray.length === normalizedAnswerArray.length) {
         return RESULTADOS_CHUTE.CORRETO;
     } else {
         return RESULTADOS_CHUTE.PARCIAL;
@@ -30,13 +39,18 @@ function compareArrayCountAttribute(guessArray = [], answerArray = []) {
     if (guessArray.length === answerArray.length) {
         return RESULTADOS_CHUTE.CORRETO;
     } else {
-        return RESULTADOS_CHUTE.INCORRETO;
+        const guessCount = guessArray.length;
+        const answerCount = answerArray.length;
+        const difference = guessCount - answerCount;
+
+        const posicao = difference < 0 ? "MENOR" : "MAIOR";
+
+        return { ...RESULTADOS_CHUTE.INCORRETO, posicao };
     }
 }
 
 // Função para comparar o chute do usuário com o personagem do dia
 export function compareGuess(guess, characterOfTheDay) {
-    // Problema: se fazer o chute com um alias, dá parâmetro inválido
     if (!guess || !characterOfTheDay){
         console.error("compareGuess: Parâmetros inválidos.");
         return {
@@ -58,10 +72,8 @@ export function compareGuess(guess, characterOfTheDay) {
         alinhamentos: compareArrayAttribute(guess.alinhamentos, characterOfTheDay.alinhamentos),
         identidades_akumatizadas: compareArrayCountAttribute(guess.identidades_akumatizadas, characterOfTheDay.identidades_akumatizadas),
         miraculous_associados: compareArrayAttribute(guess.miraculous_associados, characterOfTheDay.miraculous_associados),
-        primeira_aparicao: compareAttribute(guess.primeira_aparicao, characterOfTheDay.primeira_aparicao),
+        primeira_aparicao: compareAttribute(guess.primeira_aparicao.ordem_global, characterOfTheDay.primeira_aparicao.ordem_global),
     };
-
-    console.log("Resultado da comparação do chute:", results);
 
     return {
         isCorrect: nameCorrect,
