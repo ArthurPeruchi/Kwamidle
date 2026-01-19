@@ -352,7 +352,7 @@ export const personagens = [
         aliases: ["Bunnyx"],
         genero: GENEROS.FEMININO,
         alinhamentos: [ALINHAMENTOS.BOM],
-        identidades_akumatizadas: ["Temporizadora"],
+        identidades_akumatizadas: ["Temporizadora", "Temporizadora (Escarlate)"],
         miraculous_associados: [MIRACULOUS.COELHO, MIRACULOUS.CACHORRO],
         primeira_aparicao: {
             tipo: "episodio",
@@ -469,6 +469,7 @@ Obs.: Os personagens akumatizados por Scarlet Moth nos episódios de "Dia dos He
 - Rose Lavillant como Princesa Perfume (Escarlate) - ✅
 - Placide I.T. (Gorila) como Gorizilla (Escarlate) - PERSONAGEM NÃO CADASTRADO
 - Le Chiến Kim como Cupido Negro (Escarlate) - ✅
+- Alix Kubdel como Temporizadora (Escarlate) - ✅
 - Fred Haprèle como O Mímico (Escarlate) - PERSONAGEM NÃO CADASTRADO
 - André como Glaciator (Escarlate) - PERSONAGEM NÃO CADASTRADO
 - Augusto como Gigantitã (Escarlate) - PERSONAGEM NÃO CADASTRADO
