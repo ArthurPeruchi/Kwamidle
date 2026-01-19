@@ -71,7 +71,7 @@ export function compareGuess(guess, characterOfTheDay) {
         genero: compareAttribute(guess.genero, characterOfTheDay.genero),
         alinhamentos: compareArrayAttribute(guess.alinhamentos, characterOfTheDay.alinhamentos),
         identidades_akumatizadas: compareArrayCountAttribute(guess.identidades_akumatizadas, characterOfTheDay.identidades_akumatizadas),
-        miraculous_associados: compareArrayAttribute(guess.miraculous_associados, characterOfTheDay.miraculous_associados),
+        miraculous_associados: compareArrayAttribute(guess.miraculous_associados.map(ma => ma.nome), characterOfTheDay.miraculous_associados.map(ma => ma.nome)),
         primeira_aparicao: compareAttribute(guess.primeira_aparicao.ordem_global, characterOfTheDay.primeira_aparicao.ordem_global),
     };
 

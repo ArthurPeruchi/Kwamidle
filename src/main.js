@@ -144,8 +144,26 @@ function addGuessToTable(personagem) {
     row.appendChild(identidadesCell);
 
     // Miraculous Associados
-    const miraculousCell = createCell(personagem.miraculous_associados?.join(", ") || "-");
-    miraculousCell.style.backgroundColor = colors[comparison.results.miraculous_associados];
+    const miraculousCell = createCell("");
+    miraculousCell.style.backgroundColor =
+    colors[comparison.results.miraculous_associados];
+
+    if (personagem.miraculous_associados.length === 0) {
+        miraculousCell.textContent = "Nenhum";
+    }
+    personagem.miraculous_associados.forEach(ma => {
+    const img = document.createElement("img");
+    img.src = ma.imagem;
+    img.alt = ma.nome;
+    img.style.width = "32px";
+    img.style.marginRight = "4px";
+
+    miraculousCell.appendChild(img);
+    });
+    // Tooltip com os nomes dos Miraculous Associados
+    miraculousCell.title = personagem.miraculous_associados.length > 0 ?
+        personagem.miraculous_associados.map(ma => ma.nome).join(", ") :
+        "Nenhum poder de Miraculous usado";
     row.appendChild(miraculousCell);
 
     // Primeira Aparição

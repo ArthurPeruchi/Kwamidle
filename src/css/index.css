@@ -20,7 +20,8 @@
 }
 
 #guesses-table {
-    width: 50%;
+    table-layout: fixed;
+    width: 55%;
     border: 1px solid black;
     padding: 5px;
     border-collapse: collapse;
@@ -31,8 +32,8 @@
 
 #guesses-table th {
     table-layout: fixed;
-    width: 16.6%;
-    height: 70px;
+    width: 6.6%;
+    aspect-ratio: 1 / 1;
     color: white;
     border: 1px solid white;
     padding: 5px;
@@ -49,7 +50,7 @@
 #guesses-table td {
     table-layout: fixed;
     width: 16.6%;
-    height: 70px;
+    height: 100px;
     border: 1px solid black;
     padding: 5px;
     text-align: center;
@@ -58,19 +59,4 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
     white-space: normal;
-}
-
-.correct {
-    background-color: green;
-    color: white;
-}
-
-.partial {
-    background-color: orange;
-    color: white;
-}
-
-.incorrect {
-    background-color: red;
-    color: white;
 }
