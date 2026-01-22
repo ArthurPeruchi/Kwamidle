@@ -113,8 +113,17 @@ function addGuessToTable(personagem) {
     };
 
     // Nome
-    const nomeCell = createCell(personagem.nome);
+    const nomeCell = createCell("");
     nomeCell.style.backgroundColor = colors[comparison.results.nome];
+
+    // Imagem do personagem
+    const img = document.createElement("img");
+    img.src = personagem.imagem;
+    img.alt = personagem.nome;
+    img.title = personagem.nome;
+    img.classList.add("character-icon-img");
+
+    nomeCell.appendChild(img);
     row.appendChild(nomeCell);
 
     // Gênero
@@ -155,15 +164,13 @@ function addGuessToTable(personagem) {
     const img = document.createElement("img");
     img.src = ma.imagem;
     img.alt = ma.nome;
-    img.style.width = "32px";
-    img.style.marginRight = "4px";
+    img.title = ma.nome;
 
+    img.classList.add("miraculous-img");
+    
+    miraculousCell.classList.add("miraculous-cell");
     miraculousCell.appendChild(img);
     });
-    // Tooltip com os nomes dos Miraculous Associados
-    miraculousCell.title = personagem.miraculous_associados.length > 0 ?
-        personagem.miraculous_associados.map(ma => ma.nome).join(", ") :
-        "Nenhum poder de Miraculous usado";
     row.appendChild(miraculousCell);
 
     // Primeira Aparição

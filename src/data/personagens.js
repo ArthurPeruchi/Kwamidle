@@ -14,7 +14,8 @@ export const personagens = [
             temporada: 1,
             episodio: 1,
             ordem_global: 1
-        }      
+        },
+        imagem: "public/images/icons/marinette_icon.png"
     },
     {
         id: 2,
@@ -29,7 +30,8 @@ export const personagens = [
             temporada: 1,
             episodio: 1,
             ordem_global: 1
-        }
+        },
+        imagem: "public/images/icons/adrien_icon.png"
     },
     {
         id: 3,
@@ -44,7 +46,8 @@ export const personagens = [
             temporada: 1,
             episodio: 1,
             ordem_global: 1
-        }
+        },
+        imagem: "public/images/icons/gabriel_icon.png"
     },
     {
         id: 4,
@@ -59,7 +62,8 @@ export const personagens = [
             temporada: 1,
             episodio: 1,
             ordem_global: 1
-        }
+        },
+        imagem: "public/images/icons/alya_icon.png"
     },
     {
         id: 5,
@@ -74,7 +78,8 @@ export const personagens = [
             temporada: 1,
             episodio: 2,
             ordem_global: 2
-        }
+        },
+        imagem: "public/images/icons/nino_icon.png"
     },
     {
         id: 6,
@@ -89,7 +94,8 @@ export const personagens = [
             temporada: 1,
             episodio: 2,
             ordem_global: 2
-        }
+        },
+        imagem: "public/images/icons/chloe_icon.png"
     },
     {
         id: 7,
@@ -104,7 +110,8 @@ export const personagens = [
             temporada: 1,
             episodio: 6,
             ordem_global: 6
-        }
+        },
+        imagem: "public/images/icons/nathalie_icon.png"
     },
     {
         id: 8,
@@ -119,7 +126,8 @@ export const personagens = [
             temporada: 1,
             episodio: 2,
             ordem_global: 2
-        }
+        },
+        imagem: "public/images/icons/sabrina_icon.png"
     },
     {
         id: 9,
@@ -134,7 +142,8 @@ export const personagens = [
             temporada: 1,
             episodio: 26,
             ordem_global: 26
-        }
+        },
+        imagem: "public/images/icons/lila_icon.png"
     },
     {
         id: 10,
@@ -149,7 +158,8 @@ export const personagens = [
             temporada: 1,
             episodio: 2,
             ordem_global: 2
-        }
+        },
+        imagem: "public/images/icons/max_icon.png"
     },
     {
         id: 11,
@@ -164,7 +174,8 @@ export const personagens = [
             temporada: 2,
             episodio: 7,
             ordem_global: 33
-        }
+        },
+        imagem: "public/images/icons/kyoko_icon.png"
     },
     {
         id: 12,
@@ -179,7 +190,8 @@ export const personagens = [
             temporada: 1,
             episodio: 2,
             ordem_global: 2
-        }
+        },
+        imagem: "public/images/icons/juleika_icon.png"
     },
     {
         id: 13,
@@ -194,7 +206,8 @@ export const personagens = [
             temporada: 2,
             episodio: 9,
             ordem_global: 35
-        }
+        },
+        imagem: "public/images/icons/luka_icon.png"
     },
     {
         id: 14,
@@ -209,7 +222,8 @@ export const personagens = [
             temporada: 1,
             episodio: 3,
             ordem_global: 3
-        }
+        },
+        imagem: "public/images/icons/denis_icon.png"
     },
     {
         id: 15,
@@ -224,7 +238,8 @@ export const personagens = [
             temporada: 1,
             episodio: 2,
             ordem_global: 2
-        }
+        },
+        imagem: "public/images/icons/rose_icon.png"
     },
     {
         id: 16,
@@ -239,7 +254,8 @@ export const personagens = [
             temporada: 3,
             episodio: 23,
             ordem_global: 75
-        }
+        },
+        imagem: "public/images/icons/felix_icon.png"
     },
     {
         id: 17,
@@ -254,7 +270,8 @@ export const personagens = [
             temporada: 1,
             episodio: 3,
             ordem_global: 3
-        }
+        },
+        imagem: "public/images/icons/caline_icon.png"
     },
     {
         id: 18,
@@ -269,7 +286,8 @@ export const personagens = [
             temporada: 1,
             episodio: 3,
             ordem_global: 3
-        }
+        },
+        imagem: "public/images/icons/tom_icon.png"
     },
     {
         id: 19,
@@ -284,7 +302,8 @@ export const personagens = [
             temporada: 1,
             episodio: 3,
             ordem_global: 3
-        }
+        },
+        imagem: "public/images/icons/sabine_icon.png"
     },
     {
         id: 20,
@@ -299,7 +318,8 @@ export const personagens = [
             temporada: 1,
             episodio: 1,
             ordem_global: 1
-        }
+        },
+        imagem: "public/images/icons/manon_icon.png"
     },
     {
         id: 21,
@@ -314,7 +334,8 @@ export const personagens = [
             temporada: 1,
             episodio: 2,
             ordem_global: 2
-        }
+        },
+        imagem: "public/images/icons/ivan_icon.png"
     },
     {
         id: 22,
@@ -329,7 +350,8 @@ export const personagens = [
             temporada: 1,
             episodio: 2,
             ordem_global: 2
-        }
+        },
+        imagem: "public/images/icons/mylene_icon.png"
     },
     {
         id: 23,
@@ -344,7 +366,8 @@ export const personagens = [
             temporada: 2,
             episodio: 21,
             ordem_global: 47
-        }
+        },
+        imagem: "public/images/icons/nora_icon.png"
     },
     {
         id: 24,
@@ -359,7 +382,8 @@ export const personagens = [
             temporada: 1,
             episodio: 2,
             ordem_global: 2
-        }
+        },
+        imagem: "public/images/icons/alix_icon.png"
     },
     {
         id: 25,
@@ -374,7 +398,8 @@ export const personagens = [
             temporada: 1,
             episodio: 2,
             ordem_global: 2
-        }
+        },
+        imagem: "public/images/icons/nathaniel_icon.png"
     },
     {
         id: 26,
@@ -389,7 +414,8 @@ export const personagens = [
             temporada: 2,
             episodio: 9,
             ordem_global: 35
-        }
+        },
+        imagem: "public/images/icons/marc_icon.png"
     },
     {
         id: 27,
@@ -404,7 +430,8 @@ export const personagens = [
             temporada: 1,
             episodio: 2,
             ordem_global: 2
-        }
+        },
+        imagem: "public/images/icons/kim_icon.png"
     },
     {
         id: 28,
@@ -419,7 +446,8 @@ export const personagens = [
             temporada: 1,
             episodio: 4,
             ordem_global: 4
-        }
+        },
+        imagem: "public/images/icons/fu_icon.png"
     },
     {
         id: 29,
@@ -434,7 +462,8 @@ export const personagens = [
             temporada: 1,
             episodio: 7,
             ordem_global: 7
-        }
+        },
+        imagem: "public/images/icons/jagged_icon.png"
     },
     {
         id: 30,
@@ -449,7 +478,8 @@ export const personagens = [
             temporada: 1,
             episodio: 3,
             ordem_global: 3
-        }
+        },
+        imagem: "public/images/icons/nadja_icon.png"
     }
 ];
 
