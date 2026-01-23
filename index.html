@@ -2,36 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./src/css/index.css" />
     <title>Kwamidle</title>
   </head>
-  <body>
-    <input 
-      type="text"
-      id="character-guess-input"
-      list="characters-list"
-      placeholder="Digite o nome do personagem"
-    />
-    <datalist id="characters-list"></datalist>
-    <br></br>
-    <button id="submit-guess-button" disabled>Confirmar Chute</button>
-    <br></br>
+  <body id="body">
+    <div id="game-container">
+      <div>
+        <img id="logo" src="public/images/logo/kwamidle_logo.png" alt="Kwamidle Logo" />
+      </div>
+      <h3>Advinhe o personagem de Miraculous!</h3>
+      <input 
+        type="text"
+        id="character-guess-input"
+        list="characters-list"
+        placeholder="Digite o nome do personagem"
+      />
+      <datalist id="characters-list"></datalist>
+      <ul id="characters-dropdown"></ul>
+      <br></br>
+      <button id="submit-guess-button" disabled>Confirmar Chute</button>
+      <br></br>
 
-    <table id="guesses-table">
-      <thead>
-        <tr>
-          <th id="character-column">Personagem</th>
-          <th id="gender-column">Gênero</th>
-          <th id="alignment-column">Alinhamento(s)</th>
-          <th id="akumatized-forms-column">Formas Akumatizadas</th>
-          <th id="powers-column">Poderes de Miraculous Usados</th>
-          <th id="first-appearance-column">Primeira Aparição</th>
-        </tr>
-      </thead>
-      <tbody id="guesses-table-body">
-      </tbody>
-    </table>
+      <table id="guesses-table">
+        <thead>
+          <tr>
+            <th id="character-column">Personagem</th>
+            <th id="gender-column">Gênero</th>
+            <th id="alignment-column">Alinhamento(s)</th>
+            <th id="akumatized-forms-column">Formas Akumatizadas</th>
+            <th id="powers-column">Poderes de Miraculous Usados</th>
+            <th id="first-appearance-column">Primeira Aparição</th>
+          </tr>
+        </thead>
+        <tbody id="guesses-table-body">
+        </tbody>
+      </table>
 
-    <script type="module" src="./src/main.js"></script>
+      <script type="module" src="./src/main.js"></script>
+    </div>
   </body>
 </html>
