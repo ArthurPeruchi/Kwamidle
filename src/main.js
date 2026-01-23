@@ -9,18 +9,16 @@ let gameState = createGameState(6);
 console.log("Personagem do dia:", gameState.characterOfTheDay);
 
 const input = document.getElementById('character-guess-input');
-const submitButton = document.getElementById('submit-guess-button');
-
-// Substituir datalist por dropdown customizado para melhor controle
-const datalist = document.getElementById('characters-list');
+const submitButton = document.getElementById('submit-guess-button');;
+const dropdown = document.getElementById('characters-dropdown');
 const table = document.getElementById("guesses-table");
 
-// Função para atualizar o datalist com base no chute atual
-function updateDatalist(guess = "") {
+// Função para atualizar o dropdown com base no chute atual
+function updateDropdown(guess = "") {
     // Ordenar personagens por nome para melhor usabilidade
     const sortedPersonagens = personagens.slice().sort((a, b) => a.nome.localeCompare(b.nome));
 
-    datalist.innerHTML = ''; // Limpa o datalist antes de popular
+    dropdown.innerHTML = ''; // Limpa o dropdown antes de popular
 
     const normalizedGuess = normalizeGuess(guess);
     
@@ -34,30 +32,33 @@ function updateDatalist(guess = "") {
             return; // Pula personagens que não correspondem ao chute
         }
 
-        // Opção do datalist
-        const option = document.createElement('option');
+        // Opção do dropdown
+        const option = document.createElement('li');
 
         // Formatar valor como apenas "Nome"
-        option.value = personagem.nome;
+        option.textContent = personagem.nome;
             
         // Se houver aliases, adiciona ao label
         if (personagem.aliases?.length) {
-            option.label = `(${personagem.aliases.join(", ")})`;
+            const span = document.createElement('span');
+            span.textContent = ` (${personagem.aliases.join(", ")})`;
+            span.classList.add('alias-span');
+            option.appendChild(span);
         }
 
-        // Adicionar ao datalist
-        datalist.appendChild(option);
+        // Seleciona o personagem ao clicar na opção
+        option.addEventListener('click', () => {
+            input.value = personagem.nome;
+            dropdown.innerHTML = ''; // Fecha o dropdown após a seleção
+            submitGuess(personagem.nome);
+        });
+
+        // Adicionar ao dropdown
+        dropdown.appendChild(option);
     });
 }
 
-updateDatalist("");
-
-// Função para detectar se houve seleção do personagem pelo datalist (autocomplete)
-function isExactDatalistOption(value) {
-    return personagens.some(personagem =>
-        normalizeGuess(personagem.nome) === normalizeGuess(value)
-    );
-}
+updateDropdown("");
 
 // Função para completar o chute com base nas opções disponíveis (ordem alfabética)
 // A variável "sortedPersonagens" é utilizada como cache para evitar reordenações repetidas
@@ -82,7 +83,7 @@ function getBestCompletion(guess) {
 
 // Função para limpar o input após um chute
 function clearInput() {
-    updateDatalist("");
+    updateDropdown("");
     input.value = "";
     submitButton.disabled = true;
 }
@@ -98,6 +99,9 @@ function createCell(text) {
 function addGuessToTable(personagem) {
     const tableBody = document.getElementById("guesses-table-body");
     const row = document.createElement("tr");
+
+    row.classList.add("guess-row");
+    row.classList.add("guess-row-animate");
 
     const comparison = compareGuess(personagem, gameState.characterOfTheDay);
     
@@ -187,6 +191,13 @@ function addGuessToTable(personagem) {
 
     // Adiciona a linha à tabela (acima)
     tableBody.prepend(row);
+
+    const el = document.querySelector(".miraculous-cell");
+    if (personagem.miraculous_associados.length > 9) {
+    el.style.alignContent = 'flex-start';
+    } else {
+    el.style.alignContent = 'center';
+    }
 }
 
 // Função para submeter um chute
@@ -252,9 +263,9 @@ function convertGuessToObject(guess) {
     };
 }
 
-// Função para readicionar as opções ao datalist ao reiniciar o jogo
-function resetDatalist() {
-    updateDatalist("");
+// Função para readicionar as opções ao dropdown ao reiniciar o jogo
+function resetDropdown() {
+    updateDropdown("");
 }
 
 // Função para verificar se o jogo já começou
@@ -279,7 +290,7 @@ function resetGame() {
         clearInput();
         gameState = resetGameState(gameState.maxGuesses);
         console.log("Personagem do dia:", gameState.characterOfTheDay);
-        resetDatalist();
+        resetDropdown();
         updateGuessesTableVisibility();
     }
 }
@@ -295,7 +306,7 @@ if (gameState.isFinished || gameState.guesses.length >= gameState.maxGuesses) {
 input.addEventListener("input", () => {
     const guess = input.value;
 
-    updateDatalist(guess);
+    updateDropdown(guess);
 
     // Desabilita o botão se houver parênteses no chute
     if (containsParentheses(guess)){
@@ -320,10 +331,6 @@ input.addEventListener("input", () => {
 
     // Habilita o botão apenas se houver possibilidade de correspondência e o chute não for vazio ou duplicado
     submitButton.disabled = !possible || guess.trim() === "" || completedGuess === null;
-
-    if (isExactDatalistOption(guess) && submitButton.disabled === false) {
-        submitButton.click();
-    }
 });
 
 // Adiciona evento ao botão de submissão do chute
