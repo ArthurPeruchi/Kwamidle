@@ -35,16 +35,32 @@ function updateDropdown(guess = "") {
         // Opção do dropdown
         const option = document.createElement('li');
 
-        // Formatar valor como apenas "Nome"
-        option.textContent = personagem.nome;
+        // Contâiner de nome + aliases
+        const textWrapper = document.createElement('div');
+        textWrapper.classList.add('option-text-wrapper');
+
+        // Nome do personagem
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = personagem.nome;
+        nameSpan.classList.add('option-name-span');
+
+        textWrapper.appendChild(nameSpan);
             
         // Se houver aliases, adiciona ao label
         if (personagem.aliases?.length) {
-            const span = document.createElement('span');
-            span.textContent = ` (${personagem.aliases.join(", ")})`;
-            span.classList.add('alias-span');
-            option.appendChild(span);
+            const aliasSpan = document.createElement('span');
+            aliasSpan.textContent = ` Vulgo: ${personagem.aliases.join(", ")}`;
+            aliasSpan.classList.add('alias-span');
+            textWrapper.appendChild(aliasSpan);
         }
+
+        option.appendChild(textWrapper);
+
+        // Adiciona a imagem como background via CSS
+        option.style.setProperty(
+            "--avatar",
+            `url(../../${personagem.imagem})`
+        );
 
         // Seleciona o personagem ao clicar na opção
         option.addEventListener('click', () => {
@@ -52,6 +68,9 @@ function updateDropdown(guess = "") {
             dropdown.innerHTML = ''; // Fecha o dropdown após a seleção
             submitGuess(personagem.nome);
         });
+
+        // Tornar a opção focável para acessibilidade
+        option.setAttribute("tabindex", "0");
 
         // Adicionar ao dropdown
         dropdown.appendChild(option);
@@ -84,6 +103,7 @@ function getBestCompletion(guess) {
 // Função para limpar o input após um chute
 function clearInput() {
     updateDropdown("");
+    dropdown.style.display = 'none';
     input.value = "";
     submitButton.disabled = true;
 }
@@ -240,6 +260,7 @@ function submitGuess(guess) {
 
     addGuessToTable(personagem);
     updateGuessesTableVisibility();
+    
     clearInput();
 
     console.log("Chute do usuário:", completedGuess);
@@ -302,11 +323,32 @@ if (gameState.isFinished || gameState.guesses.length >= gameState.maxGuesses) {
 }
 */
 
+// Função para fechar o dropdown ao clicar fora dele
+function CloseDropdown(event) {
+    const newFocus = event.relatedTarget;
+
+    // Se o foco foi para o input ou para o dropdown, não fecha
+    if (
+        input.contains(newFocus) ||
+        dropdown.contains(newFocus)
+    ) {
+        return;
+    }
+
+    dropdown.style.display = "none";
+}
+
 // Adiciona evento ao input para validação em tempo real
 input.addEventListener("input", () => {
     const guess = input.value;
-
     updateDropdown(guess);
+    
+    if (guess.trim() === "") {
+        dropdown.style.display = 'none';
+        submitButton.disabled = true;
+        return;
+    }
+    dropdown.style.display = 'block';
 
     // Desabilita o botão se houver parênteses no chute
     if (containsParentheses(guess)){
@@ -331,6 +373,27 @@ input.addEventListener("input", () => {
 
     // Habilita o botão apenas se houver possibilidade de correspondência e o chute não for vazio ou duplicado
     submitButton.disabled = !possible || guess.trim() === "" || completedGuess === null;
+});
+
+// Adiciona evento para mostrar o dropdown ao focar no input
+input.addEventListener("focus", () => {
+    if (input.value.trim() === "") {
+        dropdown.style.display = 'none';
+        return;
+    }
+    updateDropdown(input.value);
+    dropdown.style.display = 'block'; // Exibe o dropdown ao clicar no input
+});
+
+// Adiciona evento para esconder o dropdown ao perder o foco
+input.addEventListener("blur", CloseDropdown);
+dropdown.addEventListener("focusout", CloseDropdown);
+
+// Adiciona evento para submissão ao pressionar Enter
+input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && !submitButton.disabled) {
+        submitButton.click(); // Dispara o clique no botão de submissão
+    }
 });
 
 // Adiciona evento ao botão de submissão do chute
