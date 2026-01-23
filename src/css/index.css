@@ -1,8 +1,32 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-image: url(../../public/images/background/miraculous_background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+#logo {
+    width: 300px;
+    margin: 20px;
+}
+
+#game-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 #character-guess-input {
     display: block;
     width: 50%;
     height: 30px;
-    font-size: 16px;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -13,50 +37,85 @@
     display: block;
     margin: 10px auto;
     padding: 10px 20px;
-    font-size: 16px;
     border: none;
     border-radius: 4px;
-    cursor: 'pointer';
 }
 
 #guesses-table {
-    table-layout: fixed;
-    width: 55%;
-    border: 1px solid black;
-    padding: 5px;
-    border-collapse: collapse;
-    margin-top: 20px;
     margin: 0 auto;
     display: none; /* Oculta a tabela inicialmente */
 }
 
 #guesses-table th {
-    table-layout: fixed;
-    width: 6.6%;
-    aspect-ratio: 1 / 1;
-    color: white;
-    border: 1px solid white;
-    padding: 5px;
-    background-color: #363c3d;
-
-    text-align: center;
-    vertical-align: middle;
-
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
+    min-width: 122px;
+    width: 122px;
+    height: 122px;
+    padding: 0;
+    background-color: #f0f0f0;;
 }
 
 #guesses-table td {
-    table-layout: fixed;
-    width: 16.6%;
-    height: 100px;
-    border: 1px solid black;
-    padding: 5px;
     text-align: center;
-    vertical-align: middle;
-
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
+    width: 116px;
+    padding: 0;
 }
+
+.character-icon-img {
+    margin: 0 auto;
+    height: 122px;
+    width: 122px;
+    vertical-align: middle;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.character-icon-img:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 4px rgb(175, 175, 136));
+}
+
+#guesses-table td.miraculous-cell {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: normal;
+    padding: 3px;
+    height: 116px;
+
+    overflow-y: auto;
+    scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
+    scrollbar-width: thin;
+}
+
+.miraculous-img {
+    width: 30px;
+    margin: 2px;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+.miraculous-img:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 4px rgb(175, 175, 136));
+    z-index: 10;
+}
+
+.miraculous-img:hover::after {
+    opacity: 1;
+}
+
+/*
+.guess-row-animate {
+    animation: fadeSlideIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+*/
