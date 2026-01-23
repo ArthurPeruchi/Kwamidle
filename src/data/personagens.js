@@ -183,7 +183,7 @@ export const personagens = [
         aliases: ["Purple Tigress"],
         genero: GENEROS.FEMININO,
         alinhamentos: [ALINHAMENTOS.BOM],
-        identidades_akumatizadas: ["Reflekta"],
+        identidades_akumatizadas: ["Reflekta", "Reflekta (Escarlate)"],
         miraculous_associados: [MIRACULOUS.TIGRE],
         primeira_aparicao: {
             tipo: "episodio",
