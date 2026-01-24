@@ -213,10 +213,12 @@ function addGuessToTable(personagem) {
     tableBody.prepend(row);
 
     const el = document.querySelector(".miraculous-cell");
-    if (personagem.miraculous_associados.length > 9) {
-    el.style.alignContent = 'flex-start';
-    } else {
-    el.style.alignContent = 'center';
+    if (el) {
+        if (personagem.miraculous_associados.length > 9) {
+            el.style.alignContent = 'flex-start';
+        } else {
+            el.style.alignContent = 'center';
+        }
     }
 }
 
@@ -335,6 +337,7 @@ function CloseDropdown(event) {
         return;
     }
 
+    dropdown.scrollTop = 0;
     dropdown.style.display = "none";
 }
 
@@ -377,10 +380,6 @@ input.addEventListener("input", () => {
 
 // Adiciona evento para mostrar o dropdown ao focar no input
 input.addEventListener("focus", () => {
-    if (input.value.trim() === "") {
-        dropdown.style.display = 'none';
-        return;
-    }
     updateDropdown(input.value);
     dropdown.style.display = 'block'; // Exibe o dropdown ao clicar no input
 });
@@ -388,13 +387,6 @@ input.addEventListener("focus", () => {
 // Adiciona evento para esconder o dropdown ao perder o foco
 input.addEventListener("blur", CloseDropdown);
 dropdown.addEventListener("focusout", CloseDropdown);
-
-// Adiciona evento para submissão ao pressionar Enter
-input.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" && !submitButton.disabled) {
-        submitButton.click(); // Dispara o clique no botão de submissão
-    }
-});
 
 // Adiciona evento ao botão de submissão do chute
 submitButton.addEventListener('click', () => {
