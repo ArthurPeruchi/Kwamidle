@@ -10,53 +10,121 @@ body {
 }
 
 #game-container {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.55);
     padding: 20px;
     border-radius: 10px;
-    max-width: 800px;
+    width: 800px;
+    min-height: 620px;
     margin: 0 auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #logo {
     width: 300px;
-    margin: 20px;
+    margin: 20px 0 0 0;
 }
 
-#character-guess-input {
-    display: block;
+#input-container {
+    display: flex;  
+    justify-content: center;
+    align-items: center;
     width: 50%;
-    height: 30px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
     margin: 0 auto;
 }
 
+#character-guess-input {
+    background-image: url(../../public/components/input.png);
+    background-size: contain;
+    background-position: center;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    padding: 10px 60px 12px 20px;
+    height: 90px;
+    width: 350px;
+    box-sizing: border-box;
+    border: none;
+    font-size: 1em;
+}
+
+#character-guess-input:focus-visible {
+    outline: none;
+}
+
 #submit-guess-button {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
+    background-image: url(../../public/components/submitButton.png);
+    background-size: contain;
+    background-position: center;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    height: 79px;
+    width: 79px;
+    padding: 5px 10px;
     border: none;
     border-radius: 4px;
+    margin-left: -30px;
+}
+
+#submit-guess-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+#submit-guess-button:not(:disabled) {
+    cursor: pointer;
+}
+
+#submit-guess-button:hover:not(:disabled) {
+    transform: scale(1.05);
+    transition: transform 0.2s;
+    filter: brightness(85%);
+}
+
+#dropdown-container {
+    position: relative;
 }
 
 #characters-dropdown {
     list-style: none;
-    width: 50%;
+    width: 25%;
+    min-width: 370px;
     max-height: 250px;
     text-align: left;
     display: none;
     border: 1px solid #ccc;
     overflow-y: scroll;
-    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin-top: 5px;
     padding: 0;
-    scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
+    position: absolute;
+    z-index: 1000;
+}
+
+#characters-dropdown::-webkit-scrollbar {
+    width: 10px;
+}
+
+#characters-dropdown::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 6px 0;
+}
+
+#characters-dropdown::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+#characters-dropdown::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.55);
 }
 
 #characters-dropdown li {
     padding: 10px;
     border-bottom: 1px solid #181818;
+    background-color: #ffffff;
     display: flex;    
     align-items: center;
     cursor: pointer;
@@ -81,6 +149,29 @@ body {
     flex: 0 0 64px;
 }
 
+#characters-dropdown li.no-options {
+    min-height: auto;
+    justify-content: center;
+    cursor: default;
+    text-align: center;
+}
+
+#characters-dropdown li.no-options::before {
+    display: none;
+}
+
+#characters-dropdown li.no-options:hover {
+    background-color: #ffffff;
+}
+
+#characters-dropdown li:first-child {
+    border-top: none;
+}
+
+#characters-dropdown li:last-child {
+    border-bottom: none;
+}
+
 .option-text-wrapper {
     display: flex;
     flex-direction: column;
@@ -98,22 +189,175 @@ body {
 }
 
 #guesses-table {
-    margin: 0 auto;
+    margin: 40px auto;
     display: none; /* Oculta a tabela inicialmente */
 }
 
-#guesses-table th {
+#guesses-table tr:not(.spacer-row) th {
     min-width: 122px;
     width: 122px;
-    height: 122px;
+    height: 80px;
+    opacity: 0;
+    background: linear-gradient(
+            to bottom,
+            rgb(209, 241, 216) 0%,
+            rgba(127, 226, 154, 0.29) 60%,
+            #C5D4AE 100%
+        );
     padding: 0;
-    background-color: #f0f0f0;;
+    box-shadow:
+        0 0 12px rgba(120, 255, 200, 0.35),
+        inset 0 0 8px rgba(120, 255, 200, 0.25);
+    text-shadow: 0 0 6px rgb(175, 204, 193);
+    animation: appearHeader 1s ease-out forwards;
+    animation-delay: calc(1s + (0.5s * var(--index)));
+    animation-name: appearHeader, toastAnimation;
+}
+
+@keyframes appearHeader {
+    from {
+        transform: translateY(80px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes toastAnimation {
+    0% {
+        transform: translateY(80px);
+        opacity: 1;
+    }
+    20% {
+        transform: translateY(3px);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-2px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#guesses-table tr:not(.spacer-row) th:nth-child(1) {
+    --index: 0;
+}
+
+#guesses-table tr:not(.spacer-row) th:nth-child(2) {
+    --index: 1;
+}
+
+#guesses-table tr:not(.spacer-row) th:nth-child(3) {
+    --index: 2;
+}
+
+#guesses-table tr:not(.spacer-row) th:nth-child(4) {
+    --index: 3;
+}
+
+#guesses-table tr:not(.spacer-row) th:nth-child(5) {
+    --index: 4;
+}
+
+#guesses-table tr:not(.spacer-row) th:nth-child(6) {
+    --index: 5;
+}
+
+.spacer-row th {
+    position: relative;
+    background: none;
+    border: none;
+    height: 0;
+    padding: 0;
+    animation: appearDivider 1s ease-out forwards;
+}
+
+@keyframes appearDivider {
+    from {
+        transform: translateX(2000px);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.spacer-row th::after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 50px);
+    transform: translateX(-50%);
+    top: -10px;
+
+    height: 70px;
+    background-image: url(../../public/components/diviser-staff.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#guesses-table thead::after {
+    content: "";
+    display: block;
+    height: 52px;
 }
 
 #guesses-table td {
     text-align: center;
+    height: 116px;
     width: 116px;
     padding: 0;
+        box-shadow:
+        0 0 12px rgba(165, 173, 170, 0.35),
+        inset 0 0 8px rgba(32, 46, 40, 0.25);
+
+    opacity: 0;
+    transform-style: preserve-3d;
+    animation: flipCard 1s forwards;
+    perspective: 1000px;
+    transform-origin: center;
+    animation-delay: var(--delay);
+}
+
+#guesses-table td:nth-child(1) {
+    --index: 0;
+}
+
+#guesses-table td:nth-child(2) {
+    --index: 1;
+}
+
+#guesses-table td:nth-child(3) {
+    --index: 2;
+}
+
+#guesses-table td:nth-child(4) {
+    --index: 3;
+}
+
+#guesses-table td:nth-child(5) {
+    --index: 4;
+}
+
+#guesses-table td:nth-child(6) {
+    --index: 5;
+}
+
+@keyframes flipCard {
+    from {
+        transform: rotateY(90deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
 }
 
 .character-icon-img {
@@ -157,19 +401,4 @@ body {
 
 .miraculous-img:hover::after {
     opacity: 1;
-}
-
-.guess-row-animate {
-    animation: fadeSlideIn 0.4s ease-out forwards;
-}
-
-@keyframes fadeSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
