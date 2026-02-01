@@ -480,6 +480,101 @@ export const personagens = [
             ordem_global: 3
         },
         imagem: "public/images/icons/nadja_icon.png"
+    },
+    {
+        id: 31,
+        nome: "Placide I.T.",
+        aliases: ["Gorila"],
+        genero: GENEROS.MASCULINO,
+        alinhamentos: [ALINHAMENTOS.BOM],
+        identidades_akumatizadas: ["Gorizilla", "Gorizilla (Escarlate)"],
+        miraculous_associados: [],
+        primeira_aparicao: {
+            tipo: "episodio",
+            temporada: 1,
+            episodio: 1,
+            ordem_global: 1
+        },
+        imagem: "public/images/icons/gorila_icon.png"
+    },
+    {
+        id: 32,
+        nome: "Zoé Lee",
+        aliases: ["Vesperia"],
+        genero: GENEROS.FEMININO,
+        alinhamentos: [ALINHAMENTOS.BOM],
+        identidades_akumatizadas: ["Esmagadora"],
+        miraculous_associados: [MIRACULOUS.ABELHA, MIRACULOUS.GATO],
+        primeira_aparicao: {
+            tipo: "episodio",
+            temporada: 4,
+            episodio: 7,
+            ordem_global: 85
+        },
+        imagem: "public/images/icons/zoe_icon.png"
+    },
+    {
+        id: 33,
+        nome: "André Bourgeois",
+        aliases: [],
+        genero: GENEROS.MASCULINO,
+        alinhamentos: [ALINHAMENTOS.NEUTRO, ALINHAMENTOS.BOM],
+        identidades_akumatizadas: ["Ditador", "Caça-Amores", "Ditador (Escarlate)"],
+        miraculous_associados: [],
+        primeira_aparicao: {
+            tipo: "episodio",
+            temporada: 1,
+            episodio: 3,
+            ordem_global: 3
+        },
+        imagem: "public/images/icons/andre_icon.png"
+    },
+    {
+        id: 34,
+        nome: "Audrey Bourgeois",
+        aliases: [],
+        genero: GENEROS.FEMININO,
+        alinhamentos: [ALINHAMENTOS.NEUTRO, ALINHAMENTOS.MAL],
+        identidades_akumatizadas: ["Rainha da Moda", "Caça-Amores", "Rainha da Moda (Escarlate)"],
+        miraculous_associados: [],
+        primeira_aparicao: {
+            tipo: "episodio",
+            temporada: 2,
+            episodio: 4,
+            ordem_global: 30
+        },
+        imagem: "public/images/icons/audrey_icon.png"
+    },
+    {
+        id: 35,
+        nome: "Ondine",
+        aliases: [],
+        genero: GENEROS.FEMININO,
+        alinhamentos: [ALINHAMENTOS.BOM],
+        identidades_akumatizadas: ["Sereia", "Sereia (Escarlate)", "Sereia Adormecida"],
+        miraculous_associados: [],
+        primeira_aparicao: {
+            tipo: "episodio",
+            temporada: 2,
+            episodio: 9,
+            ordem_global: 35
+        },
+        imagem: "public/images/icons/ondine_icon.png"
+    },
+    {
+        id: 36,
+        nome: "Jessica Keynes",
+        aliases: ["Águia"],
+        genero: GENEROS.FEMININO,
+        alinhamentos: [ALINHAMENTOS.BOM],
+        identidades_akumatizadas: [],
+        miraculous_associados: [MIRACULOUS.AGUIA],
+        primeira_aparicao: {
+            tipo: "especial",
+            nome: "Miraculous World: Nova Iorque - Heróis Unidos",
+            codigo_producao: 327
+        },
+        imagem: "public/images/icons/jessica_icon.png"
     }
 ];
 
@@ -497,7 +592,7 @@ Obs.: Os personagens akumatizados por Scarlet Moth nos episódios de "Dia dos He
 - Ivan Bruel como Coração de Pedra (Escarlate) - ✅
 - Max Kanté como Jogador (Escarlate) - ✅
 - Rose Lavillant como Princesa Perfume (Escarlate) - ✅
-- Placide I.T. (Gorila) como Gorizilla (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Placide I.T. (Gorila) como Gorizilla (Escarlate) - ✅
 - Le Chiến Kim como Cupido Negro (Escarlate) - ✅
 - Alix Kubdel como Temporizadora (Escarlate) - ✅
 - Fred Haprèle como O Mímico (Escarlate) - PERSONAGEM NÃO CADASTRADO
@@ -508,8 +603,8 @@ Obs.: Os personagens akumatizados por Scarlet Moth nos episódios de "Dia dos He
 - Roger Raincomprix como Rogercop (Escarlate) - PERSONAGEM NÃO CADASTRADO
 - Kyoko Tsurugi como Revanche (Escarlate) - ✅
 - Armand como Urso Maligno (Escarlate) - PERSONAGEM NÃO CADASTRADO
-- Audrey Bourgeois como Rainha da Moda (Escarlate) - PERSONAGEM NÃO CADASTRADO
-- André Bourgeois como Ditador (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Audrey Bourgeois como Rainha da Moda (Escarlate) - ✅
+- André Bourgeois como Ditador (Escarlate) - ✅
 - Ondine como Sereia (Escarlate) - PERSONAGEM NÃO CADASTRADO
 - Phillipe Candeloro como Frozer (Escarlate) - PERSONAGEM NÃO CADASTRADO
 - Armand D'Argencourt como Lâmina Negra (Escarlate) - PERSONAGEM NÃO CADASTRADO
