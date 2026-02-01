@@ -86,6 +86,10 @@ export const MIRACULOUS = {
     PORCO: {
         nome: "Porco",
         imagem: "public/images/miraculous/pig_miraculous_symbol.png"
+    },
+    AGUIA: {
+        nome: "Águia",
+        imagem: "public/images/miraculous/eagle_miraculous_symbol.png"
     }
 };
 
