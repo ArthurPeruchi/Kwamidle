@@ -75,6 +75,14 @@ function updateDropdown(guess = "") {
         // Adicionar ao dropdown
         dropdown.appendChild(option);
     });
+
+    // Se não houver opções, mostra uma mensagem
+    if (dropdown.children.length === 0) {
+        const noOptions = document.createElement('li');
+        noOptions.textContent = "Nenhum personagem encontrado.";
+        noOptions.classList.add('no-options');
+        dropdown.appendChild(noOptions);
+    }
 }
 
 updateDropdown("");
@@ -121,7 +129,6 @@ function addGuessToTable(personagem) {
     const row = document.createElement("tr");
 
     row.classList.add("guess-row");
-    row.classList.add("guess-row-animate");
 
     const comparison = compareGuess(personagem, gameState.characterOfTheDay);
     
@@ -260,7 +267,11 @@ function submitGuess(guess) {
         return;
     }
 
+    const tableBody = document.getElementById("guesses-table-body");
+    
+    // Adiciona o chute à tabela de chutes
     addGuessToTable(personagem);
+    animateNewGuessRow(tableBody.firstChild);
     updateGuessesTableVisibility();
     
     clearInput();
@@ -307,11 +318,24 @@ function updateGuessesTableVisibility() {
     }
 }
 
+function animateNewGuessRow(rowElement) {
+    const tds = rowElement.querySelectorAll("td");
+    const isFirstGuess = gameState.guesses.length === 1;
+
+    tds.forEach((td, index) => {
+        const delay = isFirstGuess
+            ? `calc(1s + (0.5s * ${index}))`
+            : `calc(0.5s * ${index})`;
+
+        td.style.setProperty("--delay", delay);
+    });
+}
+
 // Função para reiniciar o jogo
 function resetGame() {
     if (gameState.isFinished || gameState.guesses.length >= gameState.maxGuesses) {
         clearInput();
-        gameState = resetGameState(gameState.maxGuesses);
+        gameState = resetGameState(gameState); // ?? bug
         console.log("Personagem do dia:", gameState.characterOfTheDay);
         resetDropdown();
         updateGuessesTableVisibility();
