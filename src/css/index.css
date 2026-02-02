@@ -244,6 +244,13 @@ body {
     }
 }
 
+#guesses-table tr:not(.spacer-row) th:hover {
+    filter: brightness(110%);
+    font-size: 1.03em;
+    translate: 0 -2px;
+    transition: translate 0.5s, font-size 0.5s;
+}
+
 #guesses-table tr:not(.spacer-row) th:nth-child(1) {
     --index: 0;
 }
@@ -266,6 +273,37 @@ body {
 
 #guesses-table tr:not(.spacer-row) th:nth-child(6) {
     --index: 5;
+}
+
+.tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: #222;
+    color: #fff;
+    padding: 6px;
+    border-radius: 6px;
+    min-width: 122px;
+    text-shadow: none;
+
+    font-size: 0.8rem;
+
+    transition: opacity 0.2s ease;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 0.95;
 }
 
 .spacer-row th {
@@ -369,7 +407,7 @@ body {
 }
 
 .character-icon-img:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     filter: drop-shadow(0 0 4px rgb(175, 175, 136));
 }
 
@@ -396,7 +434,6 @@ body {
 .miraculous-img:hover {
     transform: scale(1.15);
     filter: drop-shadow(0 0 4px rgb(175, 175, 136));
-    z-index: 10;
 }
 
 .miraculous-img:hover::after {
