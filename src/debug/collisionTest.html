@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Debug Colisões</title>
+</head>
+<body>
+  <h1>Debug Colisões</h1>
+  <script type="module">
+    import { personagens } from '../data/personagens.js';
+    import { detectCharacterCollisions } from '../game/detectCollision.js';
+
+    const colisoes = detectCharacterCollisions(personagens);
+    console.log('Colisões encontradas:', colisoes);
+    alert(`Colisões encontradas: ${colisoes.length}`);
+  </script>
+</body>
+</html>
