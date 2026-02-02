@@ -571,8 +571,8 @@ export const personagens = [
         miraculous_associados: [MIRACULOUS.AGUIA],
         primeira_aparicao: {
             tipo: "especial",
-            nome: "Miraculous World: Nova Iorque - Heróis Unidos",
-            codigo_producao: 327
+            nome: "Miraculous World: Nova Iorque",
+            temporada: 3
         },
         imagem: "public/images/icons/jessica_icon.png"
     }
@@ -587,7 +587,6 @@ Obs.: Os personagens akumatizados por Scarlet Moth nos episódios de "Dia dos He
 - Nadja Chamack como Rainha Repórter (Escarlate) - ✅
 - Sabrina Raincomprix como Desaparecida (Escarlate) - ✅
 - Jagged Stone como Guitarrista Malvado (Escarlate) - ✅
-- Clara Nigthingale como Cantora (Escarlate) - PERSONAGEM NÃO CADASTRADO
 - Mylene Haprèle como Horrificador (Escarlate) - ✅
 - Ivan Bruel como Coração de Pedra (Escarlate) - ✅
 - Max Kanté como Jogador (Escarlate) - ✅
@@ -595,17 +594,18 @@ Obs.: Os personagens akumatizados por Scarlet Moth nos episódios de "Dia dos He
 - Placide I.T. (Gorila) como Gorizilla (Escarlate) - ✅
 - Le Chiến Kim como Cupido Negro (Escarlate) - ✅
 - Alix Kubdel como Temporizadora (Escarlate) - ✅
+- Kyoko Tsurugi como Revanche (Escarlate) - ✅
+- Audrey Bourgeois como Rainha da Moda (Escarlate) - ✅
+- André Bourgeois como Ditador (Escarlate) - ✅
+- Ondine como Sereia (Escarlate) - ✅
+- Armand como Urso Maligno (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Phillipe Candeloro como Frozer (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Armand D'Argencourt como Lâmina Negra (Escarlate) - PERSONAGEM NÃO CADASTRADO
 - Fred Haprèle como O Mímico (Escarlate) - PERSONAGEM NÃO CADASTRADO
 - André como Glaciator (Escarlate) - PERSONAGEM NÃO CADASTRADO
 - Augusto como Gigantitã (Escarlate) - PERSONAGEM NÃO CADASTRADO
 - Otis Césaire como Animan (Escarlate) - PERSONAGEM NÃO CADASTRADO
 - Jalil Kubdel como O Faraó (Escarlate) - PERSONAGEM NÃO CADASTRADO
 - Roger Raincomprix como Rogercop (Escarlate) - PERSONAGEM NÃO CADASTRADO
-- Kyoko Tsurugi como Revanche (Escarlate) - ✅
-- Armand como Urso Maligno (Escarlate) - PERSONAGEM NÃO CADASTRADO
-- Audrey Bourgeois como Rainha da Moda (Escarlate) - ✅
-- André Bourgeois como Ditador (Escarlate) - ✅
-- Ondine como Sereia (Escarlate) - PERSONAGEM NÃO CADASTRADO
-- Phillipe Candeloro como Frozer (Escarlate) - PERSONAGEM NÃO CADASTRADO
-- Armand D'Argencourt como Lâmina Negra (Escarlate) - PERSONAGEM NÃO CADASTRADO
+- Clara Nigthingale como Cantora (Escarlate) - PERSONAGEM NÃO CADASTRADO
 */

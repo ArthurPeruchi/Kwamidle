@@ -205,15 +205,26 @@ function addGuessToTable(personagem) {
     row.appendChild(miraculousCell);
 
     // Primeira Aparição
-    const aparicaoCell = createCell(`T${personagem.primeira_aparicao.temporada} E${personagem.primeira_aparicao.episodio}`);
-    if (typeof comparison.results.primeira_aparicao === 'object' && comparison.results.primeira_aparicao.posicao) {
-        aparicaoCell.textContent += arrows[comparison.results.primeira_aparicao.posicao];
+    let aparicaoCell;
+    if (personagem.primeira_aparicao.tipo === "especial") {
+        aparicaoCell = createCell(`T${personagem.primeira_aparicao.temporada}`);
+        if (typeof comparison.results.primeira_aparicao === 'object' && comparison.results.primeira_aparicao.posicao) {
+            aparicaoCell.textContent += arrows[comparison.results.primeira_aparicao.posicao];
+        }
+    } else {
+        aparicaoCell = createCell(`T${personagem.primeira_aparicao.temporada} E${personagem.primeira_aparicao.episodio}`);
+        if (typeof comparison.results.primeira_aparicao === 'object' && comparison.results.primeira_aparicao.posicao) {
+            aparicaoCell.textContent += arrows[comparison.results.primeira_aparicao.posicao];
+    }
     }
     aparicaoCell.style.backgroundColor = colors[
         typeof comparison.results.primeira_aparicao === 'object' ?
         "Incorreto" :
         comparison.results.primeira_aparicao
     ];
+
+    aparicaoCell.title = personagem.primeira_aparicao.nome || "Nome desconhecido";
+
     row.appendChild(aparicaoCell);
 
     // Adiciona a linha à tabela (acima)

@@ -2,7 +2,7 @@ import { normalizeGuess } from "../utils/normalization.js";
 import { RESULTADOS_CHUTE } from "../data/enums.js";
 
 // Função para comparar valores atributos simples (não arrays)
-function compareAttribute(guessValue, answerValue) {
+export function compareAttribute(guessValue, answerValue) {
     if (guessValue === answerValue) {
         return RESULTADOS_CHUTE.CORRETO;
     } else {
@@ -15,7 +15,7 @@ function compareAttribute(guessValue, answerValue) {
 }
 
 // Função para comparar valores de atributos compostos (arrays)
-function compareArrayAttribute(guessArray = [], answerArray = []) {
+export function compareArrayAttribute(guessArray = [], answerArray = []) {
     const normalizedGuessArray = guessArray.map(item => normalizeGuess(item));
     const normalizedAnswerArray = answerArray.map(item => normalizeGuess(item));
     const intersection = normalizedGuessArray.filter(item => normalizedAnswerArray.includes(item));
@@ -35,7 +35,7 @@ function compareArrayAttribute(guessArray = [], answerArray = []) {
 }
 
 // Função para comparar quantidades de atributos compostos (arrays)
-function compareArrayCountAttribute(guessArray = [], answerArray = []) {
+export function compareArrayCountAttribute(guessArray = [], answerArray = []) {
     if (guessArray.length === answerArray.length) {
         return RESULTADOS_CHUTE.CORRETO;
     } else {
@@ -66,13 +66,20 @@ export function compareGuess(guess, characterOfTheDay) {
 
     const nameCorrect = normalizedGuess === normalizedCharacterName || normalizedAliases.includes(normalizedGuess);
 
+    const isEspecial = 
+        (characterOfTheDay.primeira_aparicao && characterOfTheDay.primeira_aparicao.tipo === "especial") ||
+        (guess.primeira_aparicao && guess.primeira_aparicao.tipo === "especial");
+
     const results = {
         nome: nameCorrect ? RESULTADOS_CHUTE.CORRETO : RESULTADOS_CHUTE.INCORRETO,
         genero: compareAttribute(guess.genero, characterOfTheDay.genero),
         alinhamentos: compareArrayAttribute(guess.alinhamentos, characterOfTheDay.alinhamentos),
         identidades_akumatizadas: compareArrayCountAttribute(guess.identidades_akumatizadas, characterOfTheDay.identidades_akumatizadas),
         miraculous_associados: compareArrayAttribute(guess.miraculous_associados.map(ma => ma.nome), characterOfTheDay.miraculous_associados.map(ma => ma.nome)),
-        primeira_aparicao: compareAttribute(guess.primeira_aparicao.ordem_global, characterOfTheDay.primeira_aparicao.ordem_global),
+        primeira_aparicao: 
+            isEspecial ? 
+                compareAttribute(guess.primeira_aparicao.temporada, characterOfTheDay.primeira_aparicao.temporada) :
+                compareAttribute(guess.primeira_aparicao.ordem_global, characterOfTheDay.primeira_aparicao.ordem_global),
     };
 
     return {
