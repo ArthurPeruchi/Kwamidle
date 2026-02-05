@@ -194,6 +194,7 @@ body {
 }
 
 #guesses-table tr:not(.spacer-row) th {
+    position: relative;
     min-width: 122px;
     width: 122px;
     height: 80px;
@@ -306,6 +307,43 @@ body {
     opacity: 0.95;
 }
 
+.info-gif {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+}
+
+#character-column {
+  position: relative;
+  z-index: 6;
+}
+
+#gender-column {
+  position: relative;
+  z-index: 5;
+}
+
+#alignment-column {
+  position: relative;
+  z-index: 4;
+}
+
+#akumatized-forms-column {
+  position: relative;
+  z-index: 3;
+}
+
+#powers-column {
+  position: relative;
+  z-index: 2;
+}
+
+#first-appearance-column {
+  position: relative;
+  z-index: 1;
+}
+
+
 .spacer-row th {
     position: relative;
     background: none;
@@ -313,6 +351,7 @@ body {
     height: 0;
     padding: 0;
     animation: appearDivider 1s ease-out forwards;
+    z-index: 100;
 }
 
 @keyframes appearDivider {
