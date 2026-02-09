@@ -65,7 +65,6 @@ function updateDropdown(guess = "") {
         // Seleciona o personagem ao clicar na opção
         option.addEventListener('click', () => {
             input.value = personagem.nome;
-            dropdown.innerHTML = ''; // Fecha o dropdown após a seleção
             submitGuess(personagem.nome);
         });
 
@@ -111,6 +110,7 @@ function getBestCompletion(guess) {
 // Função para limpar o input após um chute
 function clearInput() {
     updateDropdown("");
+    dropdown.innerHTML = ''; // Fecha o dropdown após a seleção
     dropdown.style.display = 'none';
     input.value = "";
     submitButton.disabled = true;
@@ -240,6 +240,25 @@ function addGuessToTable(personagem) {
     }
 }
 
+// Função para converter o chute do usuário (string) em um objeto estruturado
+function convertGuessToObject(guess) {
+    const personagem = personagens.find(p =>
+        normalizeGuess(p.nome) === normalizeGuess(guess)
+    );
+    if (!personagem) {
+        return null;
+    }
+    return {
+        nome: personagem.nome,
+        genero: personagem.genero,
+        alinhamentos: personagem.alinhamentos,
+        identidades_akumatizadas: personagem.identidades_akumatizadas,
+        miraculous_associados: personagem.miraculous_associados,
+        primeira_aparicao: personagem.primeira_aparicao
+    };
+}
+
+
 // Função para submeter um chute
 function submitGuess(guess) {
     // Se o jogo já terminou, avisa e reinicia
@@ -268,9 +287,6 @@ function submitGuess(guess) {
 
     if (!personagem) return;
 
-    // Autocompleta visualmente o chute no input
-    input.value = completedGuess;
-
     // Adiciona o chute ao estado do jogo
     const result = addGuess(gameState, completedGuess);
     if (result?.error) {
@@ -288,24 +304,25 @@ function submitGuess(guess) {
     clearInput();
 
     console.log("Chute do usuário:", completedGuess);
+
+    isGuessCorrect(personagem);
 }
 
-// Função para converter o chute do usuário (string) em um objeto estruturado
-function convertGuessToObject(guess) {
-    const personagem = personagens.find(p =>
-        normalizeGuess(p.nome) === normalizeGuess(guess)
-    );
-    if (!personagem) {
-        return null;
-    }
-    return {
-        nome: personagem.nome,
-        genero: personagem.genero,
-        alinhamentos: personagem.alinhamentos,
-        identidades_akumatizadas: personagem.identidades_akumatizadas,
-        miraculous_associados: personagem.miraculous_associados,
-        primeira_aparicao: personagem.primeira_aparicao
-    };
+// Função para verificar se o chute está certo
+function isGuessCorrect(personagem) {
+    const comparison = compareGuess(personagem, gameState.characterOfTheDay);
+    
+    /*
+    setTimeout(() => {
+        if (comparison.isCorrect) {
+            alert(`Parabéns! Você acertou! O personagem era ${gameState.characterOfTheDay.nome}.`);
+            // console.log("Gerando novo personagem do dia...");
+            // resetGame();
+        } else {
+            alert(`Errado! Tente novamente.`);
+        }
+    }, 4000);
+    */
 }
 
 // Função para readicionar as opções ao dropdown ao reiniciar o jogo
@@ -346,33 +363,22 @@ function animateNewGuessRow(rowElement) {
 function resetGame() {
     if (gameState.isFinished || gameState.guesses.length >= gameState.maxGuesses) {
         clearInput();
-        gameState = resetGameState(gameState); // ?? bug
-        console.log("Personagem do dia:", gameState.characterOfTheDay);
+        resetGameState(gameState);
         resetDropdown();
         updateGuessesTableVisibility();
+
+        console.log("Personagem do dia:", gameState.characterOfTheDay);
     }
 }
-
-/*
-// Verifica se o jogo já terminou ao carregar a página
-if (gameState.isFinished || gameState.guesses.length >= gameState.maxGuesses) {
-    resetGame();
-}
-*/
 
 // Função para fechar o dropdown ao clicar fora dele
 function CloseDropdown(event) {
     const newFocus = event.relatedTarget;
 
     // Se o foco foi para o input ou para o dropdown, não fecha
-    if (
-        input.contains(newFocus) ||
-        dropdown.contains(newFocus)
-    ) {
+    if (input.contains(newFocus) || dropdown.contains(newFocus)) {
         return;
     }
-
-    dropdown.scrollTop = 0;
     dropdown.style.display = "none";
 }
 
@@ -387,6 +393,7 @@ input.addEventListener("input", () => {
         return;
     }
     dropdown.style.display = 'block';
+    dropdown.scrollTop = 0; // Rola para o topo do dropdown ao abrir
 
     // Desabilita o botão se houver parênteses no chute
     if (containsParentheses(guess)){
@@ -415,8 +422,13 @@ input.addEventListener("input", () => {
 
 // Adiciona evento para mostrar o dropdown ao focar no input
 input.addEventListener("focus", () => {
+    if (input.value.trim() === "") {
+        return
+    }
+
     updateDropdown(input.value);
     dropdown.style.display = 'block'; // Exibe o dropdown ao clicar no input
+    dropdown.scrollTop = 0; // Rola para o topo do dropdown ao abrir
 });
 
 // Adiciona evento para esconder o dropdown ao perder o foco
@@ -426,24 +438,6 @@ dropdown.addEventListener("focusout", CloseDropdown);
 // Adiciona evento ao botão de submissão do chute
 submitButton.addEventListener('click', () => {
     const guess = input.value;
-
     const completedGuess = getBestCompletion(guess);
-    if (!completedGuess) {
-        alert("Chute inválido. Tente novamente.");
-        return;
-    }
-
     submitGuess(completedGuess);
-
-    const guessValue = convertGuessToObject(completedGuess);
-
-    const comparison = compareGuess(guessValue, gameState.characterOfTheDay);
-    if (comparison.isCorrect) {
-        alert(`Parabéns! Você acertou! O personagem era ${gameState.characterOfTheDay.nome}.`);
-
-        console.log("Gerando novo personagem do dia...");
-        resetGame();
-    } else {
-        alert(`Errado! Tente novamente.`);
-    }
 });
