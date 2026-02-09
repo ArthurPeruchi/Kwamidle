@@ -21,9 +21,22 @@ export function addGuess(gameState, guess) {
 
     gameState.guesses.push(guess);
 
+    checkGameFinished(gameState);
+}
+
+// Função para checar se o jogo terminou
+export function checkGameFinished(gameState) {
+    if (gameState.isFinished) {
+        return;
+    }
     if (gameState.guesses.length >= gameState.maxGuesses) {
         gameState.isFinished = true;
         gameState.won = false;
+    }
+
+    if (gameState.guesses.includes(gameState.characterOfTheDay.nome)) {
+        gameState.isFinished = true;
+        gameState.won = true;
     }
 }
 
@@ -32,4 +45,5 @@ export function resetGameState(gameState) {
     gameState.characterOfTheDay = getRandomCharacter();
     gameState.guesses = [];
     gameState.isFinished = false;
+    gameState.won = false;
 }

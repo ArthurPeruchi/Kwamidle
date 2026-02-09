@@ -258,7 +258,6 @@ function convertGuessToObject(guess) {
     };
 }
 
-
 // Função para submeter um chute
 function submitGuess(guess) {
     // Se o jogo já terminou, avisa e reinicia
@@ -297,9 +296,9 @@ function submitGuess(guess) {
     const tableBody = document.getElementById("guesses-table-body");
     
     // Adiciona o chute à tabela de chutes
+    updateGuessesTableVisibility();
     addGuessToTable(personagem);
     animateNewGuessRow(tableBody.firstChild);
-    updateGuessesTableVisibility();
     
     clearInput();
 
